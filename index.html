@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gesture Controlled Particles</title>
+  <!-- MediaPipe Hands CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+  <!-- Webcam Feed (Hidden but needed for MediaPipe) -->
+  <video class="input_video" style="display: none;"></video>
+
+  <!-- UI Overlay -->
+  <div id="ui-container">
+    <div class="header">
+      <h1>Particle Flow</h1>
+      <div class="status" id="status-text">Initializing Camera...</div>
+    </div>
+
+    <div class="controls">
+      <div class="control-group">
+        <label>Pattern</label>
+        <div class="pattern-buttons">
+          <button data-pattern="sphere" class="active">Sphere</button>
+          <button data-pattern="spiral">Spiral</button>
+          <button data-pattern="heart">Heart</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Color</label>
+        <input type="color" id="color-picker" value="#00ffff" />
+      </div>
+
+      <div class="control-group">
+        <button id="fullscreen-btn">Toggle Fullscreen</button>
+      </div>
+
+      <div class="stats">
+        Particles: <span id="particle-count">2000</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas Container -->
+  <div id="canvas-container"></div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
